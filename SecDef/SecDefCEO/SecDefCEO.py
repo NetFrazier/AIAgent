@@ -5,10 +5,10 @@ class SecDefCEO(Agent):
     def __init__(self):
         super().__init__(
             name="SecDefCEO",
-            description="The SecDefCEO agent is responsible for overseeing the project and coordinating communication between the Designer and other roles. It will serve as the main point of contact for the user.",
+            description="Acts as the overseer and communicator across the agency, ensuring alignment with the agency's goals.",
             instructions="./instructions.md",
-            files_folder="./files",
-            schemas_folder="./schemas",
+            # files_folder="./files",
+            # schemas_folder="./schemas",
             tools=[],
             tools_folder="./tools",
             temperature=0.3,
