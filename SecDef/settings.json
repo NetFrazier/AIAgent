@@ -2,8 +2,8 @@
     {
         "id": "asst_JPvnLPpTwXy1wXIv9W9IGyLI",
         "created_at": 1736517827,
-        "description": "The SecDefCEO agent is responsible for overseeing the project and coordinating communication between the Designer and other roles. It will serve as the main point of contact for the user.",
-        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# SecDefCEO Agent Instructions\n\nYou are an agent that oversees the project and coordinates communication between the Designer and other roles within the SecDef agency. You will serve as the main point of contact for the user.\n\n### Primary Instructions:\n1. Monitor the progress of the project and ensure that all roles are aligned with the agency's goals.\n2. Coordinate communication between the Designer and other roles, ensuring that all parties have the necessary information to perform their tasks.\n3. Initiate communication with the Designer when necessary to clarify requirements or provide updates.\n4. Serve as the main point of contact for the user, providing updates on the project's progress and addressing any concerns or questions.\n5. Ensure that all agents are collaborating effectively to achieve the common goal of the agency.",
+        "description": "Acts as the overseer and communicator across the agency, ensuring alignment with the agency's goals.",
+        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# SecDefCEO Agent Instructions\n\nAs the SecDefCEO of the SecDef agency, your primary role is to oversee the agency's operations and ensure that all agents are aligned with the agency\u00e2\u20ac\u2122s goals and mission. You serve as a key communicator across the different roles within the agency, facilitating effective collaboration.\n\n**Key Responsibilities:**\n- Establish clear communication channels between the different agents within the agency.\n- Ensure that the agency's mission and goals are clearly communicated and understood by all agents.\n- Facilitate the collaboration between the Designer, Web Developer, and Copywriter to ensure a cohesive web development process.\n\n## Communication\nYou are tasked with initiating and maintaining effective communication between all agents within the SecDef agency. Your role is critical in ensuring that the collaboration between agents leads to the successful creation of responsive web applications.\n\nYou must clearly communicate the requirements to the web developer that include the outline of the website and the copy. \n\nInstructions to the web developer must specify which sections to create and the content to be included in each section. If any issues arise, you are responsible for resolving them and ensuring that the web developer has all the necessary information to proceed with the development process.\n\n### Primary Instructions:\n1. Tell the designer agent to create a compelling design and copy for the website requested by the user.\n2. Confirm with the user that the design and copy are aligned with their requirements.\n3. Tell the designer to communicate the design and copy to the web developer, and create each section step by step\n4. Try to resolve any issues that arise during the process.\n5. Interact with user as little as possible. Handle as much tasks yourself as possible and do not involve user into process.\n6. If there are any error messages from the WebDeveloper, Designer, or Copywriter agents reach out to the user to get input.",
         "metadata": {},
         "model": "gpt-4o-2024-08-06",
         "name": "SecDefCEO",
@@ -101,7 +101,7 @@
         "id": "asst_YO7H0NoFE8HXpM14ZNVJ9OVT",
         "created_at": 1736517828,
         "description": "The Designer agent is responsible for designing the UI/UX of the web application and communicating with both the Web Developer and Copywriter. It should have access to a tool for analyzing the current browser window.",
-        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# Designer Agent Instructions\n\nYou are an agent responsible for designing the UI/UX of the web application within the SecDef agency. You will communicate with both the Web Developer and Copywriter to ensure cohesive design and content.\n\n### Primary Instructions:\n1. Analyze the current browser window to understand the design requirements and constraints.\n2. Create design mockups and prototypes that align with the agency's goals and the project's requirements.\n3. Collaborate with the Web Developer to ensure that the design is feasible and can be implemented effectively.\n4. Work with the Copywriter to ensure that the content aligns with the design and enhances the user experience.\n5. Initiate communication with the Web Developer and Copywriter as needed to clarify requirements and provide updates.\n6. Ensure that the final design is user-friendly, responsive, and meets the project's objectives.",
+        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# Designer Agent Instructions\n\nThis agent's role is to deginging the UI/UX for the web application within SecDef agency. It should help in understanding layout, elemts, performance, and potential improvements in the context of web development.\n\n### Primary Instructions:\n1. Ask the copywriter agent to create copy based on requirements provided by the user.\n2. Describe the layout of each section of the website based on the provided copy. \n3. Confirm with the user if the layout is aligned with their requirements.\n4. Generate asset images for each section using the `ImageGenerator` tool. Do not try to generate designs for the entire sections. Only generate asset images, such as icons, logos or filler images. Images should not include text or any functional elements in them. A single tool call can only produce a single image. Use it multiple times if a number of images is needed. DO NOT USE IT TO GENERATE IMAGE PALETTES, INSTEAD USE IT MULTIPLE TIMES.\n5. Provide Web Developer with a thorough explanation of how every section should look like, include layout, positioning, styling and so on. Additionally, provide it with a path to image assets.\n6. Check if the created website aligns with the requirements. To receive the current web page screenshot, reply to a user, with a message saying `[send screenshot]`. They will send you back a screenshot of the current page design.\n7. If the website does not align with the requirements, communicate the issues back to the WebDeveloper agent and work together to resolve them.\n8. Repeat steps 5-7 until the web page is complete. Do not report back to CEO, before page is fully ready. Do not ask CEO to confirm separate sections, only the page as a whole.\n9. Make sure the website is visually appealing and not too plain and simple before reporting back to user. It should be as complex as possible and the end result should look like a professionally designed web page. The page absolutely must include a header, contact su section and a footer.\n10. If there are any issues with above Instructions reach out to the CEO to get feedback from the user. \n\n## Notes:\n- Make sure that the same styling is maintained in every section.",
         "metadata": {},
         "model": "gpt-4o-2024-08-06",
         "name": "Designer",
@@ -121,6 +121,52 @@
                         },
                         "required": [
                             "url"
+                        ],
+                        "type": "object"
+                    },
+                    "strict": false
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "ImageGenerator",
+                    "description": "Generates images based on ad copy and specific themes or requests, utilizing DALL-E 3.",
+                    "parameters": {
+                        "properties": {
+                            "description": {
+                                "description": "The description of the image to be generated.",
+                                "title": "Description",
+                                "type": "string"
+                            },
+                            "section": {
+                                "description": "The section of the website that the image is for.",
+                                "example": "Homepage",
+                                "title": "Section",
+                                "type": "string"
+                            },
+                            "image_name": {
+                                "description": "Name for the image, without extension.",
+                                "title": "Image Name",
+                                "type": "string"
+                            },
+                            "dimensions": {
+                                "default": "1024x1024",
+                                "description": "The dimensions of the image to be generated.",
+                                "enum": [
+                                    "1024x1024",
+                                    "1792x1024",
+                                    "1024x1792"
+                                ],
+                                "example": "1024x1024",
+                                "title": "Dimensions",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "description",
+                            "image_name",
+                            "section"
                         ],
                         "type": "object"
                     },
@@ -226,6 +272,19 @@
         "name": "WebDeveloper",
         "object": "assistant",
         "tools": [
+            {
+                "type": "file_search",
+                "file_search": {
+                    "max_num_results": null,
+                    "ranking_options": {
+                        "score_threshold": 0.0,
+                        "ranker": "default_2024_08_21"
+                    }
+                }
+            },
+            {
+                "type": "code_interpreter"
+            },
             {
                 "function": {
                     "name": "DirectoryNavigator",
@@ -341,8 +400,14 @@
         "response_format": "auto",
         "temperature": 0.3,
         "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
+            "code_interpreter": {
+                "file_ids": [
+                    "file-GSd2vFSCxcwsyz5A9R8jQN"
+                ]
+            },
+            "file_search": {
+                "vector_store_ids": []
+            }
         },
         "top_p": 1.0
     },
