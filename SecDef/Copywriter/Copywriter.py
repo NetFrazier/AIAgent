@@ -5,7 +5,7 @@ class Copywriter(Agent):
     def __init__(self):
         super().__init__(
             name="Copywriter",
-            description="The Copywriter agent is responsible for creating and editing content for the web application. It communicates with the Designer to ensure content aligns with the design but does not require any specific tools.",
+            description="Responsible for creating compelling content for the web applications. Collaborates with the Web Developer for content integration.",
             instructions="./instructions.md",
             files_folder="./files",
             schemas_folder="./schemas",

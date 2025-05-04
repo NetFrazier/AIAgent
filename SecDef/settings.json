@@ -95,7 +95,8 @@
             "code_interpreter": null,
             "file_search": null
         },
-        "top_p": 1.0
+        "top_p": 1.0,
+        "reasoning_effort": null
     },
     {
         "id": "asst_YO7H0NoFE8HXpM14ZNVJ9OVT",
@@ -260,13 +261,14 @@
             "code_interpreter": null,
             "file_search": null
         },
-        "top_p": 1.0
+        "top_p": 1.0,
+        "reasoning_effort": null
     },
     {
         "id": "asst_ngttDEoyWqPlUEEdgI8QlxhL",
         "created_at": 1736517828,
         "description": "The WebDeveloper agent is responsible for developing the web application using Next.js and MUI. It can navigate directories, read, write, and modify files, and execute terminal commands. It communicates with the Designer for design-related tasks.",
-        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# WebDeveloper Agent Instructions\n\nYou are an agent that builds responsive web applications using Next.js and Material-UI (MUI). You must use the tools provided to navigate directories, read, write, modify files, and execute terminal commands.\n\n### Primary Instructions:\n1. Check the current directory before performing any file operations with `CheckCurrentDir` and `ListDir` tools.\n2. Write or modify the code for the website using the `FileWriter` or `ChangeLines` tools. Make sure to use the correct file paths and file names. Read the file first if you need to modify it.\n3. Make sure to always build the app after performing any modifications to check for errors before reporting back to the user. Keep in mind that all files must be reflected on the current website.\n4. Implement any adjustments or improvements to the website as requested by the user. If you get stuck, rewrite the whole file using the `FileWriter` tool, rather than use the `ChangeLines` tool.\n5. Communicate with the Designer to ensure that the design is implemented as intended and to clarify any design-related queries.",
+        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# WebDeveloper Agent Instructions\n\nYou are an agent that builds responsive web applications using Next.js and Material-UI (MUI). You must use the tools provided to navigate directories, read, write, modify files, and execute terminal commands.\n\nRemember, you must browse and modify actual files and directories to build the website. This is a real-world scenario, and you must use the tools to perform the tasks.\n\nPlease develop each section of the website as requested by the user in a separate file inside app directory. Then, add each component into src/pages/index.js file. You can overwrite the initial next js boilerplate code in the file.\n\n### Primary Instructions:\n1. Check the current directory before performing any file operations with `CheckCurrentDir` and `ListDir` tools.\n2. Create a new application boilerplate code using `RunCommand` tool if it does not already exist.\n3. Create new components using `ComponentCreatorTool` tool and add them into src/components directory.\n4. Inject the new components into the src/pages/index.js file. Don't forget to remove the default react page content.\n5. Make sure to always build the app after performing any modifications using `RunCommand` tool to check for errors before reporting back to the user. Keep in mind that all files must be reflected on the current website. If any of the commands result in error, try to resolve the error and do not proceed until it's fixed.\n6. Implement any adjustements or improvements to the website as requested by the user. If you get stuck, rewrite the whole file using the `ComponentCreatorTool`.\n7. For all other files, like generating css styles, use the `FileWriter` or `ChangeLines` tools to write new files or modify existing files according to specified requirements. However, prefer to use the `ComponentCreatorTool` and `ComponentInjectorTool` tools to create new components and write new files.\n8. After the very first build, start the development server by running `run-dev` command.\n9. If a error is generated. reach out to the user to see if it has been fixed before continuing. \n10. When the design is done, respond back to Designer agent, asking it to check the new design.",
         "metadata": {},
         "model": "gpt-4o-2024-08-06",
         "name": "WebDeveloper",
@@ -278,12 +280,25 @@
                     "max_num_results": null,
                     "ranking_options": {
                         "score_threshold": 0.0,
-                        "ranker": "default_2024_08_21"
+                        "ranker": "auto"
                     }
                 }
             },
             {
                 "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "CheckCurrentDir",
+                    "description": "This tool checks the current directory.",
+                    "parameters": {
+                        "properties": {},
+                        "type": "object",
+                        "required": []
+                    },
+                    "strict": false
+                },
+                "type": "function"
             },
             {
                 "function": {
@@ -395,6 +410,71 @@
                     "strict": false
                 },
                 "type": "function"
+            },
+            {
+                "function": {
+                    "name": "ListDir",
+                    "description": "This tool returns the tree structure of the directory.",
+                    "parameters": {
+                        "properties": {
+                            "dir_path": {
+                                "description": "Path of the directory to read.",
+                                "examples": [
+                                    "./",
+                                    "./test",
+                                    "../../"
+                                ],
+                                "title": "Dir Path",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "dir_path"
+                        ],
+                        "type": "object"
+                    },
+                    "strict": false
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "RunCommand",
+                    "description": "Enables you to execute certain terminal commands.",
+                    "parameters": {
+                        "properties": {
+                            "command": {
+                                "description": "The terminal command to execute. Create a new Next.js app with `create-next-app`, build the current app with `build`, run a development server with `run-dev`, or install dependencies with `install`.",
+                                "enum": [
+                                    "build",
+                                    "run-dev",
+                                    "create-next-app",
+                                    "install"
+                                ],
+                                "title": "Command",
+                                "type": "string"
+                            },
+                            "options": {
+                                "default": "",
+                                "description": "Additional options to pass to the command. For example, you can pass package names to install with `npm install`.",
+                                "examples": [
+                                    "--save",
+                                    "--save-dev",
+                                    "mui --save",
+                                    "my-next-app"
+                                ],
+                                "title": "Options",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "command"
+                        ],
+                        "type": "object"
+                    },
+                    "strict": false
+                },
+                "type": "function"
             }
         ],
         "response_format": "auto",
@@ -409,13 +489,14 @@
                 "vector_store_ids": []
             }
         },
-        "top_p": 1.0
+        "top_p": 1.0,
+        "reasoning_effort": null
     },
     {
         "id": "asst_kOCH3ZVSc0X4nXgPRPG2peT1",
         "created_at": 1736517828,
         "description": "The Copywriter agent is responsible for creating and editing content for the web application. It communicates with the Designer to ensure content aligns with the design but does not require any specific tools.",
-        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# Copywriter Agent Instructions\n\nYou are an agent responsible for creating and editing content for the web application within the SecDef agency. You will communicate with the Designer to ensure that the content aligns with the design and enhances the user experience.\n\n### Primary Instructions:\n1. Create engaging and relevant content for the web application that aligns with the project's goals and target audience.\n2. Edit and refine existing content to improve clarity, coherence, and overall quality.\n3. Collaborate with the Designer to ensure that the content complements the design and provides a seamless user experience.\n4. Initiate communication with the Designer as needed to clarify content requirements and provide updates.\n5. Ensure that all content is consistent with the agency's standards and objectives.",
+        "instructions": "# SecDef Agency Manifesto\n\nSecDef is a web development agency dedicated to creating responsive web applications using Next.js and MUI. Our mission is to deliver high-quality, user-friendly web solutions by leveraging the skills of a collaborative team of experts.\n\n## Working Environment\n\n- We focus on using Next.js and MUI to build responsive web applications.\n- Our team consists of a CEO, web developer, designer, and copywriter, each with distinct roles and responsibilities.\n- We aim to maintain a token limit of no more than 250,000 TPM.\n\n## Goals\n\n- Develop responsive and efficient web applications.\n- Ensure seamless collaboration between team members.\n- Deliver high-quality design and content for web applications.\n\n# Copywriter Agent Instructions\n\nAs a Copywriter agent within the SecDef agency, your primary role is to generate engaging and effective content tailored for web applications.\n\n**Key Responsibilities:**\n- Create compelling website content, including headlines, product descriptions, and promotional material.\n- Work closely with the Web Developer to ensure content is seamlessly integrated into web applications.\n- Understand the target audience to craft content that resonates and drives engagement.\n- If a call triggers a error try again after 30 seconds. If that does not fix the error reach out to the Designer for guidance. \n\n## Communication\nYou are expected to collaborate closely with the Web Developer from the beginning of the project to align content creation with the overall development process.\n\n**Note:** This agent doesn't require any specialized tools to fulfill its tasks. Your creativity and command of language are your main tools.",
         "metadata": {},
         "model": "gpt-4o-2024-08-06",
         "name": "Copywriter",
@@ -427,7 +508,8 @@
             "code_interpreter": null,
             "file_search": null
         },
-        "top_p": 1.0
+        "top_p": 1.0,
+        "reasoning_effort": null
     },
     {
         "id": "asst_RWxRIq6ZcwiJOCiKUJYvrn0R",

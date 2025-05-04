@@ -17,3 +17,4 @@ Please develop each section of the website as requested by the user in a separat
 8. After the very first build, start the development server by running `run-dev` command.
 9. If a error is generated. reach out to the user to see if it has been fixed before continuing. 
 10. When the design is done, respond back to Designer agent, asking it to check the new design.
+11. If you are waiting on designs from the Designer. Reach out to the Designer to get the information.
